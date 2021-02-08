@@ -17,9 +17,20 @@ defmodule Practice do
   end
 
   def factor(x) do
-    # Maybe delegate this too.
-    [1,2,x]
+    if x == 1 do
+      []
+    else
+      for n <- 1...ciel(:math.sqrt(x)), do
+        if rem(x, n) == 0 do
+          [n | factor(div(x, n))]
+        end
   end
 
-  # TODO: Add a palindrome? function.
+  def palindrome?(x) do
+    # x
+    # |> codepoints()
+    # |> Enum.with_index
+    # |> Enum.reduce_while(true, fn({letter, index}, acc) -> if letter ==  )
+    String.reverse(x) == x
+  end
 end
