@@ -20,7 +20,7 @@ defmodule Practice do
     if x == 1 do
       []
     else
-      for n <- Range.new(1, ciel(:math.sqrt(x))), do:
+      for n <- Range.new(1, ciel(:math.sqrt(x))), do
         if rem(x, n) == 0 do
           [n | factor(div(x, n))]
         end
