@@ -24,6 +24,7 @@ defmodule Practice do
         if rem(x, n) == 0 do
           [n | factor(div(x, n))]
         end
+    end
   end
 
   def palindrome?(x) do
