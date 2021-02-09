@@ -17,7 +17,6 @@ defmodule Practice do
   end
 
   def factor(x) do
-    IO.puts(x)
     factor_helper(x, [], 2)
   end
 
