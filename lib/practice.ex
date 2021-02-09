@@ -24,7 +24,7 @@ defmodule Practice do
   def factor_helper(x, acc, cand) do
     cond do
       cand >= :math.sqrt(x) ->
-        acc ++ [cand]
+        acc ++ [x]
       rem(x, cand) == 0 ->
         factor_helper(div(x, cand), acc ++ [cand], 2)
       true ->
