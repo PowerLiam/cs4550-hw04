@@ -17,13 +17,17 @@ defmodule Practice do
   end
 
   def factor(x) do
-    if x == 1 do
-      []
-    else
-      for n <- Range.new(1, ciel(:math.sqrt(x))), do
-        if rem(x, n) == 0 do
-          [n | factor(div(x, n))]
-        end
+    factor_helper(x, [], 2)
+  end
+
+  def factor_helper(x, acc, cand) do
+    cond do
+      cand >= :math.sqrt(x) ->
+        acc ++ [cand]
+      rem(x, cand) == 0 ->
+        factor_helper(div(x, cand), acc ++ [cand], 2)
+      true ->
+        factor_helper(x, acc, cand + 1)
     end
   end
 
