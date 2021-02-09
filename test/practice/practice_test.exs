@@ -29,9 +29,11 @@ defmodule Practice.PracticeTest do
 
   test "check some palindromes" do
     assert palindrome?("abc123321cba") == true
+    assert palindrome?("abc12321cba") == true
     assert palindrome?("a") == true
 
-    assert palindrome?("abc123321cba") == false
+    assert palindrome?("abc123321cb") == false
+    assert palindrome?("abc124321cb") == false
     assert palindrome?("abccb") == false
   end
 end

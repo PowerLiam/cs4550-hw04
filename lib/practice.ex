@@ -17,7 +17,7 @@ defmodule Practice do
   end
 
   def factor(x) do
-    factor_helper(x, [], 2)
+    factor_helper(Integer.parse(x), [], 2)
   end
 
   def factor_helper(x, acc, cand) do
