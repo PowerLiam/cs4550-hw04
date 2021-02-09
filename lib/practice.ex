@@ -18,7 +18,7 @@ defmodule Practice do
 
   def factor(x) do
     IO.puts(x)
-    factor_helper(Integer.parse(x), [], 2)
+    factor_helper(String.to_integer(x), [], 2)
   end
 
   def factor_helper(x, acc, cand) do
