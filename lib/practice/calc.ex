@@ -54,6 +54,7 @@ defmodule Practice.Calc do
 
   def op_cmp(x, y) do
     op_num(x) - op_num(y)
+  end
 
   def op_num(x) do
     cond do
