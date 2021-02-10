@@ -43,6 +43,7 @@ defmodule Practice.Calc do
         {[popped_op] ++ later_popped_ops, later_remaining_stack}
       true ->
         {[], op_stack}
+    end
   end
 
   def op?(x) do
