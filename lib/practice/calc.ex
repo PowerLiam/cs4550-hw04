@@ -64,7 +64,7 @@ defmodule Practice.Calc do
 
   def op_num(x) do
     low_ops = MapSet.new(["+", "-"])
-    high_ops = MapSet.new(["x", "/"])
+    high_ops = MapSet.new(["*", "/"])
     cond do
       MapSet.member?(high_ops, x) ->
         1
