@@ -44,7 +44,7 @@ defmodule Practice.Calc do
     IO.puts("--------")
     cond do
       stack_head == nil ->
-        {[], op_stack}
+        {[], op_stack ++ op}
       op_cmp(op, stack_head) >= 0 ->
         {popped_op, remaining_stack} = List.pop_at(op_stack, length(op_stack) - 1)
         {later_popped_ops, later_remaining_stack} = pop_lower_ops(op, remaining_stack)
