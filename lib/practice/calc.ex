@@ -38,7 +38,10 @@ defmodule Practice.Calc do
   # {popped, remaining_stack}
   def pop_lower_ops(op, op_stack) do
     stack_head = List.last(op_stack)
-    IO.puts("STACK HEAD #{stack_head}")
+    IO.puts("\n--------\n")
+    IO.puts("STACK #{op_stack}\n")
+    IO.puts("STACK HEAD #{stack_head}\n")
+    IO.puts("--------\n")
     cond do
       stack_head == nil ->
         {[], op_stack}
