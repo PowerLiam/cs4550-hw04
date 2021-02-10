@@ -14,6 +14,7 @@ defmodule PracticeWeb.PageControllerTest do
   test "calc 3 * 5 - 10 / 2", %{conn: conn} do
     conn = post conn, "/calc", %{"expr" => "3 * 5 - 10 / 2"}
     assert html_response(conn, 200) =~ "10"
+    IO.puts(html_response(conn, 200))
   end
 
   test "factor 255", %{conn: conn} do
