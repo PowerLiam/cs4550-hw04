@@ -55,7 +55,7 @@ defmodule Practice.Calc do
   end
 
   def op?(x) do
-    x == "+" or x == "x" or x == "/" or x == "-"
+    x == "+" or x == "*" or x == "/" or x == "-"
   end
 
   def op_cmp(x, y) do
