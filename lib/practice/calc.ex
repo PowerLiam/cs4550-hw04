@@ -23,7 +23,7 @@ defmodule Practice.Calc do
       end
       )
     |> (fn({op_stack, result}) ->
-          result ++ List.reverse(op_stack) end).()
+          result ++ Enum.reverse(op_stack) end).()
     |> IO.puts()
 
     # Hint:
