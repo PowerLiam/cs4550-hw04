@@ -18,7 +18,6 @@ defmodule PracticeWeb.PageControllerTest do
 
   test "factor 255", %{conn: conn} do
     conn = post conn, "/factor", %{"x" => "255"}
-    IO.puts(html_response(conn, 200))
     assert html_response(conn, 200) =~ "17"
   end
 
