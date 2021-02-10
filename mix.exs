@@ -11,11 +11,11 @@ defmodule Practice.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
-    ]
-    releases: [
-      prod: [
-        applications: [practice: :permanent]
-      ],
+      releases: [
+        prod: [
+          applications: [practice: :permanent]
+        ]
+      ]
     ]
   end
 
