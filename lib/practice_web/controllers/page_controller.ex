@@ -12,7 +12,9 @@ defmodule PracticeWeb.PageController do
   end
 
   def calc(conn, %{"expr" => expr}) do
+    IO.puts("RUNNING CALC")
     y = Practice.calc(expr)
+    IO.puts("Result: #{y}")
     render conn, "calc.html", expr: expr, y: Float.to_string(y)
   end
 
