@@ -80,6 +80,7 @@ defmodule Practice.Calc do
 
   def eval_postfix(l, stack) do
     {next, rest} = List.pop_at(l, 0)
+    IO.puts("STACK: #{stack}")
     cond do
       next == nil ->
         {head, _} = List.pop_at(stack, length(stack) - 1)
