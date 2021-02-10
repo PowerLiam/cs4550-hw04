@@ -22,7 +22,8 @@ defmodule Practice.Calc do
         end
       end
       )
-    |> elem(1)
+    |> fn({op_stack, result}) ->
+      result ++ List.reverse(op_stack)
     |> IO.puts()
 
     # Hint:
