@@ -22,7 +22,7 @@ defmodule Practice.Calc do
         end
       end
       )
-    |> List.last()
+    |> elem(1)
     |> IO.puts()
 
     # Hint:
