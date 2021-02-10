@@ -96,6 +96,7 @@ defmodule Practice.Calc do
   def eval_op(r1, r2, op) do
     {rand1, _} = Float.parse(r1)
     {rand2, _} = Float.parse(r2)
+    IO.puts("#{r1} #{op} #{r2}")
     cond do
       op == "+" ->
         Float.to_string(rand1 + rand2)
