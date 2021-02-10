@@ -1,4 +1,5 @@
 defmodule Practice.Calc do
+
   def parse_float(text) do
     {num, _} = Float.parse(text)
     num
@@ -25,31 +26,11 @@ defmodule Practice.Calc do
     |> (fn({op_stack, result}) ->
           result ++ Enum.reverse(op_stack) end).()
     |> eval_postfix([])
-    |> (fn(str_res) ->
-          {res, _} = Float.parse(str_res)
-          res end).()
-
-
-    # Hint:
-    # 5 + 7 * 9 - 4 / 2
-    # expr
-    # |> split
-    # |> tag_tokens  (e.g. [+, 1] => [{:op, "+"}, {:num, 1.0}]
-    # |> convert to postfix
-    # |> reverse to prefix
-    # |> evaluate as a stack calculator using pattern matching
+    |> parse_float()
   end
 
-  # {popped, remaining_stack}
   def pop_lower_ops(op, op_stack) do
     stack_head = List.last(op_stack)
-    IO.puts("--------")
-    IO.puts(op)
-    IO.puts(op_stack)
-    if stack_head != nil do
-      IO.puts(op_cmp(op, stack_head))
-    end
-    IO.puts("--------")
     cond do
       stack_head == nil or  op_cmp(op, stack_head) > 0 ->
         {[], op_stack ++ [op]}
@@ -83,7 +64,6 @@ defmodule Practice.Calc do
 
   def eval_postfix(l, stack) do
     {next, rest} = List.pop_at(l, 0)
-    IO.puts("STACK: #{stack}")
     cond do
       next == nil ->
         {head, _} = List.pop_at(stack, length(stack) - 1)
@@ -98,9 +78,8 @@ defmodule Practice.Calc do
   end
 
   def eval_op(r1, r2, op) do
-    {rand1, _} = Float.parse(r1)
-    {rand2, _} = Float.parse(r2)
-    IO.puts("#{r1} #{op} #{r2}")
+    rand1 = parse_float(r1)
+    rand2 = parse_float(r2)
     cond do
       op == "+" ->
         Float.to_string(rand1 + rand2)
