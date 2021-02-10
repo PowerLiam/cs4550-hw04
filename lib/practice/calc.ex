@@ -41,6 +41,9 @@ defmodule Practice.Calc do
     IO.puts("--------")
     IO.puts(op)
     IO.puts(op_stack)
+    if stack_head != nil do
+      IO.puts(op_cmp(op, stack_head))
+    end
     IO.puts("--------")
     cond do
       stack_head == nil ->
