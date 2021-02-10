@@ -37,7 +37,7 @@ defmodule Practice.Calc do
   # {popped, remaining_stack}
   def pop_lower_ops(op, op_stack) do
     cond do
-      op_cmp(op, last(op_stack)) >= 0 ->
+      op_cmp(op, List.last(op_stack)) >= 0 ->
         {popped_op, remaining_stack} = pop_at(op_stack, length(op_stack) - 1)
         {later_popped_ops, later_remaining_stack} = pop_lower_ops(op, remaining_stack)
         {[popped_op] ++ later_popped_ops, later_remaining_stack}
