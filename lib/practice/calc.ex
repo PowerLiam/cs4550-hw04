@@ -94,8 +94,8 @@ defmodule Practice.Calc do
   end
 
   def eval_op(r1, r2, op) do
-    rand1 = String.to_float(r1)
-    rand2 = String.to_float(r2)
+    rand1 = Float.parse(r1)
+    rand2 = Float.parse(r2)
     cond do
       op == "+" ->
         rand1 + rand2
