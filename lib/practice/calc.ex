@@ -82,7 +82,7 @@ defmodule Practice.Calc do
     {next, rest} = List.pop_at(l, 0)
     cond do
       next == nil ->
-        {head, rem_stack} = List.pop_at(stack, length(stack) - 1)
+        {head, _} = List.pop_at(stack, length(stack) - 1)
         head
       op?(next) ->
         {r1, rem_stack} = List.pop_at(stack, length(stack) - 1)
@@ -94,15 +94,17 @@ defmodule Practice.Calc do
   end
 
   def eval_op(r1, r2, op) do
+    rand1 = String.to_float(r1)
+    rand2 = String.to_float(r2)
     cond do
       op == "+" ->
-        r1 + r2
+        rand1 + rand2
       op == "-" ->
-        r1 - r2
+        rand1 - rand2
       op == "*" ->
-        r1 * r2
+        rand1 * rand2
       op == "/" ->
-        r1 / r2
+        rand1 / rand2
     end
   end
     
