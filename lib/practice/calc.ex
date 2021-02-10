@@ -103,6 +103,7 @@ defmodule Practice.Calc do
         r1 * r2
       op == "/" ->
         r1 / r2
+    end
   end
     
 end
