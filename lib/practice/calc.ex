@@ -88,7 +88,7 @@ defmodule Practice.Calc do
       op?(next) ->
         {r1, rem_stack} = List.pop_at(stack, length(stack) - 1)
         {r2, rem_stack} = List.pop_at(rem_stack, length(rem_stack) - 1)
-        eval_postfix(rest, rem_stack ++ [eval_op(r1, r2, next)])
+        eval_postfix(rest, rem_stack ++ [eval_op(r2, r1, next)])
       true ->
         eval_postfix(rest, stack ++ [next])
     end
