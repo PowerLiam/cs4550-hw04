@@ -36,8 +36,11 @@ defmodule Practice.Calc do
 
   # {popped, remaining_stack}
   def pop_lower_ops(op, op_stack) do
+    stack_head = List.last(op_stack)
     cond do
-      op_cmp(op, List.last(op_stack)) >= 0 ->
+      stack_head == nil ->
+        {[], op_stack}
+      op_cmp(op, stack_head) >= 0 ->
         {popped_op, remaining_stack} = List.pop_at(op_stack, length(op_stack) - 1)
         {later_popped_ops, later_remaining_stack} = pop_lower_ops(op, remaining_stack)
         {[popped_op] ++ later_popped_ops, later_remaining_stack}
@@ -58,12 +61,12 @@ defmodule Practice.Calc do
     low_ops = MapSet.new(["+", "-"])
     high_ops = MapSet.new(["x", "/"])
     cond do
-      MapSet.member?(low_ops, x) ->
+      MapSet.member?(high_ops, x) ->
         1
       MapSet.member?(low_ops, x) ->
         0
       true ->
-        raise x + " is not an operator"
+        raise "#{x} is not an operator"
     end
   end
     
