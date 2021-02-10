@@ -24,6 +24,7 @@ defmodule Practice.Calc do
       )
     |> (fn({op_stack, result}) ->
           result ++ Enum.reverse(op_stack) end).()
+    |> eval_postfix([])
     |> IO.puts()
 
     # Hint:
@@ -53,7 +54,6 @@ defmodule Practice.Calc do
         {popped_op, remaining_stack} = List.pop_at(op_stack, length(op_stack) - 1)
         {later_popped_ops, later_remaining_stack} = pop_lower_ops(op, remaining_stack)
         {[popped_op] ++ later_popped_ops, later_remaining_stack}
-        
     end
   end
 
@@ -76,6 +76,33 @@ defmodule Practice.Calc do
       true ->
         raise "#{x} is not an operator"
     end
+  end
+
+  def eval_postfix(l, stack) do
+    {next, rest} = List.pop_at(l, 0)
+    cond do
+      next == nil ->
+        {head, rem_stack} = List.pop_at(stack, length(stack) - 1)
+        head
+      op?(next) ->
+        {r1, rem_stack} = List.pop_at(stack, length(stack) - 1)
+        {r2, rem_stack} = List.pop_at(rem_stack, length(rem_stack) - 1)
+        eval_postfix(rest, rem_stack ++ [stackeval_op(r1, r2, next)])
+      true ->
+        eval_postfix(rest, stack ++ [next])
+    end
+  end
+
+  def eval_op(r1, r2, op) do
+    cond do
+      op == "+" ->
+        r1 + r2
+      op == "-" ->
+        r1 - r2
+      op == "*" ->
+        r1 * r2
+      op == "/" ->
+        r1 / r2
   end
     
 end
