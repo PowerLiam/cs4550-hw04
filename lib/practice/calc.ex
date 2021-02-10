@@ -25,7 +25,6 @@ defmodule Practice.Calc do
     |> (fn({op_stack, result}) ->
           result ++ Enum.reverse(op_stack) end).()
     |> eval_postfix([])
-    |> IO.puts()
 
     # Hint:
     # 5 + 7 * 9 - 4 / 2
