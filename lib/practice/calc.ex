@@ -94,17 +94,17 @@ defmodule Practice.Calc do
   end
 
   def eval_op(r1, r2, op) do
-    rand1 = Float.parse(r1)
-    rand2 = Float.parse(r2)
+    {rand1, _} = Float.parse(r1)
+    {rand2, _} = Float.parse(r2)
     cond do
       op == "+" ->
-        rand1 + rand2
+        Float.to_string(rand1 + rand2)
       op == "-" ->
-        rand1 - rand2
+        Float.to_string(rand1 - rand2)
       op == "*" ->
-        rand1 * rand2
+        Float.to_string(rand1 * rand2)
       op == "/" ->
-        rand1 / rand2
+        Float.to_string(rand1 / rand2)
     end
   end
     
