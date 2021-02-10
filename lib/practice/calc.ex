@@ -50,7 +50,7 @@ defmodule Practice.Calc do
         {later_popped_ops, later_remaining_stack} = pop_lower_ops(op, remaining_stack)
         {[popped_op] ++ later_popped_ops, later_remaining_stack}
       true ->
-        {[], op_stack}
+        {[], op_stack ++ op}
     end
   end
 
