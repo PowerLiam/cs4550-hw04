@@ -12,6 +12,11 @@ defmodule Practice.MixProject do
       aliases: aliases(),
       deps: deps()
     ]
+    releases: [
+      prod: [
+        applications: [practice: :permanent]
+      ],
+    ]
   end
 
   # Configuration for the OTP application.
