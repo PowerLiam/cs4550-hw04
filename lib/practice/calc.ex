@@ -38,7 +38,7 @@ defmodule Practice.Calc do
   def pop_lower_ops(op, op_stack) do
     cond do
       op_cmp(op, List.last(op_stack)) >= 0 ->
-        {popped_op, remaining_stack} = pop_at(op_stack, length(op_stack) - 1)
+        {popped_op, remaining_stack} = List.pop_at(op_stack, length(op_stack) - 1)
         {later_popped_ops, later_remaining_stack} = pop_lower_ops(op, remaining_stack)
         {[popped_op] ++ later_popped_ops, later_remaining_stack}
       true ->
@@ -51,12 +51,12 @@ defmodule Practice.Calc do
   end
 
   def op_cmp(x, y) do
-    low_ops = MapSet.new(["+", "-"])
-    high_ops = MapSet.new(["x", "/"])
     op_num(x) - op_num(y)
   end
 
   def op_num(x) do
+    low_ops = MapSet.new(["+", "-"])
+    high_ops = MapSet.new(["x", "/"])
     cond do
       MapSet.member?(low_ops, x) ->
         1
