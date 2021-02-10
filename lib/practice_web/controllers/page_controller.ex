@@ -13,7 +13,7 @@ defmodule PracticeWeb.PageController do
 
   def calc(conn, %{"expr" => expr}) do
     y = Practice.calc(expr)
-    render conn, "calc.html", expr: expr, y: y
+    render conn, "calc.html", expr: expr, y: Float.to_string(y)
   end
 
   def factor(conn, %{"x" => x}) do
