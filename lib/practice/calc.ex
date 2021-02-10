@@ -50,10 +50,9 @@ defmodule Practice.Calc do
     x == "+" or x == "x" or x == "/" or x == "-"
   end
 
-  low_ops = MapSet.new(["+", "-"])
-  high_ops = MapSet.new(["x", "/"])
-
   def op_cmp(x, y) do
+    low_ops = MapSet.new(["+", "-"])
+    high_ops = MapSet.new(["x", "/"])
     op_num(x) - op_num(y)
   end
 
