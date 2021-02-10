@@ -25,6 +25,10 @@ defmodule Practice.Calc do
     |> (fn({op_stack, result}) ->
           result ++ Enum.reverse(op_stack) end).()
     |> eval_postfix([])
+    |> (fn(str_res) ->
+          {res, _} = Float.parse(str_res)
+          res end).()
+
 
     # Hint:
     # 5 + 7 * 9 - 4 / 2
