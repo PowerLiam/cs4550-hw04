@@ -17,8 +17,7 @@ defmodule PracticeWeb.PageController do
       y = Practice.calc(expr)
       IO.puts("Result: #{y}")
       render conn, "calc.html", expr: expr, y: Float.to_string(y)
-    rescue
-      e in RuntimeError -> IO.puts("An error occurred: " <> e.message)
+      rescue e -> e catch e -> IO.puts(e) end
     end
   end
 
