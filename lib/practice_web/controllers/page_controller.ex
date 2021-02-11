@@ -13,7 +13,12 @@ defmodule PracticeWeb.PageController do
 
   def calc(conn, %{"expr" => expr}) do
     IO.puts("RUNNING CALC")
-    y = Practice.calc(expr)
+    try do
+      y = Practice.calc(expr)
+    rescue
+      e in RuntimeError -> IO.puts("An error occurred: " <> e.message)
+    end
+
     IO.puts("Result: #{y}")
     render conn, "calc.html", expr: expr, y: Float.to_string(y)
   end
