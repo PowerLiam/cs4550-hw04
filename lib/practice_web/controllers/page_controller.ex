@@ -12,12 +12,8 @@ defmodule PracticeWeb.PageController do
   end
 
   def calc(conn, %{"expr" => expr}) do
-    IO.puts("RUNNING CALC")
-    try do
-      y = Practice.calc(expr)
-      IO.puts("Result: #{y}")
-      render conn, "calc.html", expr: expr, y: Float.to_string(y)
-    rescue e -> IO.puts("ERROR #{e}") catch e -> IO.puts("ERROR #{e}") end
+    y = Practice.calc(expr)
+    render conn, "calc.html", expr: expr, y: Float.to_string(y)
   end
 
   def factor(conn, %{"x" => x}) do
